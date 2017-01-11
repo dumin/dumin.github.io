@@ -1,0 +1,36 @@
+<!doctype html>
+<link href='dist/rome.min.css' rel='stylesheet' type='text/css' />
+<link href='dist/page.css' rel='stylesheet' type='text/css' />
+<title>上班</title>
+<h1>林莉上班查询</h1>
+<h3>用于查询林莉当天是否上班，以及早晚班的情况</h3>
+<div class='examples'>
+  <div class='parent'>
+    <label class='block' for='inl'>选择想要查询的那天日期</label>
+    <div class='inline' id='inl'></div>
+    <div class='inline' id='inlvc'><span id='inlv' class='inline'>请选择日期</span></div>
+  </div>
+</div>
+<script src='dist/rome.min.js'></script>
+<script>
+var moment = rome.moment;
+
+var shangban = function (year, month, day) {
+    var str, x =  Math.floor((new Date(year, month, day) - new Date(2017, 1, 11)) / 86400000) % 4;
+
+    if (x === 0 || x === 2) str = '不上班';
+    else if (x === 3) str = '早班';
+    else str = '晚班';
+
+    // console.log('' + year + '-' + month + '-' + day + ' ' + str);
+    return '' + year + '-' + month + '-' + day + ' ' + str;
+};
+
+rome(inl, {
+    time : false
+
+}).on('data', function (value) {
+    var list = value.split('-');
+  inlv.innerText = inlv.textContent = shangban(list[0], list[1], list[2]);
+});
+</script>
