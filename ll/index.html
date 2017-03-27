@@ -16,7 +16,7 @@
 var moment = rome.moment;
 
 var shangban = function (year, month, day) {
-    var str, x =  Math.floor((new Date(year, month, day) - new Date(2017, 1, 11)) / 86400000) % 4;
+    var str, x =  Math.floor((new Date(year, month - 1, day) - new Date(2017, 0, 1)) / 86400000) % 4;
 
     if (x === 0 || x === 2) str = '不上班';
     else if (x === 3) str = '早班';
