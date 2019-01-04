@@ -1,0 +1,89 @@
+{
+  "v": "6.2.9",
+  "p": {
+    "autoAdjustIndex": true,
+    "hierarchicalRendering": true
+  },
+  "a": {
+    "connectActionType": "host",
+    "rotateAsClock": false
+  },
+  "d": [
+    {
+      "c": "ht.Node",
+      "i": 4520,
+      "p": {
+        "position": {
+          "x": 418.5,
+          "y": 480
+        },
+        "width": 480,
+        "height": 640
+      },
+      "s": {
+        "shape": "roundRect",
+        "shape.background": "rgba(51,153,255,0.16)",
+        "shape.border.width": 1,
+        "shape.border.color": "#979797",
+        "fullscreen": "uniform",
+        "fullscreen.lock": "h",
+        "shape.corner.radius": 28
+      }
+    },
+    {
+      "c": "ht.Node",
+      "i": 40829,
+      "p": {
+        "tag": "panel",
+        "host": {
+          "__i": 4520
+        },
+        "position": {
+          "x": 418.5,
+          "y": 480
+        },
+        "width": 395.85,
+        "height": 554.4
+      },
+      "s": {
+        "shape": "rect",
+        "shape.background": "rgb(51,153,255)",
+        "shape.border.width": 1,
+        "shape.border.color": "#979797",
+        "layout.h": "scale",
+        "layout.v": "scale"
+      }
+    },
+    {
+      "c": "ht.Node",
+      "i": 6165,
+      "p": {
+        "tag": "sign",
+        "host": {
+          "__i": 4520
+        },
+        "position": {
+          "x": 418.5,
+          "y": 480
+        },
+        "width": 202.98954,
+        "height": 301.44555
+      },
+      "s": {
+        "shape": "rect",
+        "shape.background": "rgb(135,144,204)",
+        "shape.border.width": 1,
+        "shape.border.color": "#979797",
+        "layout.h": "scale",
+        "layout.v": "scale"
+      }
+    }
+  ],
+  "modified": "Fri Jan 04 2019 11:49:24 GMT+0800 (中国标准时间)",
+  "contentRect": {
+    "x": 177,
+    "y": 158.5,
+    "width": 483,
+    "height": 643
+  }
+}

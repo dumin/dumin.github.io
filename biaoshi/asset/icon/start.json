@@ -1,0 +1,52 @@
+{
+  "modified": "Fri Jan 04 2019 11:56:16 GMT+0800 (中国标准时间)",
+  "width": 240,
+  "height": 300,
+  "comps": [
+    {
+      "type": "text",
+      "text": "开始",
+      "align": "center",
+      "color": "rgb(124,145,155)",
+      "scaleX": 5,
+      "scaleY": 5,
+      "rect": [
+        97.31393,
+        62.79447,
+        45.37214,
+        26.22156
+      ]
+    },
+    {
+      "type": "text",
+      "text": {
+        "func": "attr@timer",
+        "value": "3"
+      },
+      "align": "center",
+      "color": "rgb(212,0,0)",
+      "scaleX": 5,
+      "scaleY": 5,
+      "rect": [
+        97.31393,
+        193.90229,
+        45.37214,
+        26.22156
+      ]
+    },
+    {
+      "type": "text",
+      "text": "点击任意位置开始",
+      "align": "center",
+      "color": "rgba(0,0,0,0.44)",
+      "scaleX": 1.6,
+      "scaleY": 1.6,
+      "rect": [
+        65.71097,
+        98.35254,
+        108.57806,
+        62.74966
+      ]
+    }
+  ]
+}

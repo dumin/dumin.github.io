@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Preview Display</title>
+        <meta charset="UTF-8">
+        <style>
+            html, body {
+                padding: 0px;
+                margin: 0px;
+            }
+        </style>
+
+        <script src='./lib/ht.js'></script>
+        <script src='./js/main.js'></script>
+
+        <script>
+            function init() {
+                dataModel = new ht.DataModel();
+                graphView = new ht.graph.GraphView(dataModel);
+                graphView.addToDOM();
+
+                ht.Default.xhrLoad('scene.json', function(text) {
+                    var json = ht.Default.parse(text);
+                    document.title = '标识练习';
+                    dataModel.deserialize(json);
+
+                    G = new Application(graphView);
+                    G.start();
+                });
+            }
+        </script>
+    </head>
+    <body onload='init()'>
+    </body>
+</html>
