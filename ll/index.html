@@ -1,59 +1,62 @@
-<!doctype html>
-<link href='dist/rome.min.css' rel='stylesheet' type='text/css' />
-<link href='dist/page.css' rel='stylesheet' type='text/css' />
-<meta charset='utf-8'/>
+<!DOCTYPE html>
+<link href="dist/rome.min.css" rel="stylesheet" type="text/css" />
+<link href="dist/page.css" rel="stylesheet" type="text/css" />
+<meta charset="utf-8" />
 <title>上班</title>
 <h1>林莉上班查询</h1>
 <h3>用于查询林莉当天是否上班，以及早晚班的情况</h3>
-<div class='examples'>
-  <div class='parent'>
-    <label class='block' for='inl'>选择想要查询的那天日期</label>
-    <div class='inline' id='inl'></div>
-    <div class='inline' id='inlvc'><span id='inlv' class='inline'>请选择日期</span></div>
-  </div>
+<div class="examples">
+    <div class="parent">
+        <label class="block" for="inl">选择想要查询的那天日期</label>
+        <div class="inline" id="inl"></div>
+        <div class="inline" id="inlvc">
+            <span id="inlv" class="inline">请选择日期</span>
+        </div>
+    </div>
 </div>
-<script src='dist/rome.min.js'></script>
+<script src="dist/rome.min.js"></script>
 <script>
-var moment = rome.moment;
-/*
-var shangban = function (year, month, day) {
-    var str, x =  Math.floor((new Date(year, month - 1, day) - new Date(2017, 0, 3)) / 86400000) % 4;
+    var moment = rome.moment;
 
-    if (x === 0 || x === 2) str = '不上班';
-    else if (x === 3) str = '早班';
-    else str = '晚班';
+    var shangban = (window.shangban = function(year, month, day) {
+        var d2 = new Date(year, month - 1, day);
+        var str,
+            x = Math.floor((d2 - new Date(2019, 6, 8)) / 86400000) % 4;
 
-    // console.log('' + year + '-' + month + '-' + day + ' ' + str);
-    return str;
-}; */
+        if (x < 0) x += 4;
 
-var shangban = window.shangban = function (year, month, day) {
-    var d2 = new Date(year, month - 1, day);
-    var str, x =  Math.floor((d2 - new Date(2018, 4, 11)) / 86400000) % 6;
+        if (x === 0) str = '整';
+        else if (x === 2) {
+            var weekday = d2.getDay();
+            str = weekday === 0 || weekday === 4 ? '早' : '早';
+        } else str = '无 ';
 
-    if (x < 0) x += 6;
+        return str;
+    });
 
-    if (x === 0) str = '整';
-    else if (x === 2) {
-        var weekday = d2.getDay();
-        str = (weekday === 0 || weekday === 6) ? '整' : '晚';
-    }
-    else str = '无 ';
+    var showTime = function(year, month, day) {
+        inlv.innerText = inlv.textContent =
+            '' +
+            year +
+            '-' +
+            month +
+            '-' +
+            day +
+            ' ' +
+            shangban(year, month, day);
+    };
 
-    return str;
-};
+    rome(inl, {
+        time: false
+    }).on('data', function(value) {
+        var list = value.split('-');
+        showTime(list[0], list[1], list[2]);
+    });
 
-var showTime = function(year, month, day) {
-    inlv.innerText = inlv.textContent = '' + year + '-' + month + '-' + day + ' ' +  shangban(year, month, day);
-};
-
-rome(inl, {
-    time : false
-}).on('data', function (value) {
-    var list = value.split('-');
-    showTime(list[0], list[1], list[2]);
-});
-
-var currTime = new Date();
-showTime(currTime.getFullYear(), currTime.getMonth() + 1, currTime.getDate());
+    var currTime = new Date();
+    showTime(
+        currTime.getFullYear(),
+        currTime.getMonth() + 1,
+        currTime.getDate()
+    );
 </script>
